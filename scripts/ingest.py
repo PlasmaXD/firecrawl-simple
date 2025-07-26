@@ -17,8 +17,12 @@ SEED_URLS = [
 # 1) モデル初期化（軽量構成）
 embedder = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 # summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
-summarizer = pipeline("summarization", model="pszemraj/led-base-book-summary")
-
+# summarizer = pipeline("summarization", model="pszemraj/led-base-book-summary")
+summarizer = pipeline(
+    "summarization",
+    model="Zolyer/ja-t5-base-summary",         # ← 別の日本語要約モデル
+    tokenizer="Zolyer/ja-t5-base-summary"
+)
 # 2) Qdrant クライアント & コレクション用意（384次元 / コサイン類似度）
 qclient = QdrantClient(url=QDRANT_URL)
 if COLLECTION not in [c.name for c in qclient.get_collections().collections]:
