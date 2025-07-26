@@ -25,3 +25,7 @@ apps/playwright-service-ts/package-lock.json
 
 apps/js-sdk/firecrawl/dist
 
+
+
+.venv
+qdrant_storage

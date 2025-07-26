@@ -1,0 +1,6 @@
+requests
+qdrant-client
+sentence-transformers
+transformers
+torch
+beautifulsoup4
