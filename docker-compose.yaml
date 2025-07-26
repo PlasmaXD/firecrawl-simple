@@ -7,7 +7,8 @@ x-common-service: &common-service
   environment:
     - REDIS_URL=${REDIS_URL:-redis://redis:6379}
     - REDIS_RATE_LIMIT_URL=${REDIS_URL:-redis://redis:6379}
-    - PLAYWRIGHT_MICROSERVICE_URL=${PLAYWRIGHT_MICROSERVICE_URL:-http://playwright-service:3000}
+    # - PLAYWRIGHT_MICROSERVICE_URL=${PLAYWRIGHT_MICROSERVICE_URL:-http://playwright-service:3000}
+    - PUPPETEER_SERVICE_URL=${PUPPETEER_SERVICE_URL:-http://puppeteer-service:3000}
     - PORT=${PORT:-3002}
     - NUM_WORKERS_PER_QUEUE=${NUM_WORKERS_PER_QUEUE}
     - BULL_AUTH_KEY=${BULL_AUTH_KEY}
@@ -25,6 +26,8 @@ services:
     build:
       context: ./apps/puppeteer-service-ts/
       dockerfile: Dockerfile
+    ports:
+     - "3000:3000"
     environment:
       - PORT=3000
       - PROXY_SERVER=${PROXY_SERVER}
